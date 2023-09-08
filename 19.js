@@ -33,3 +33,5 @@ function myFunction2(flgA) {
 }
 
 const result2 = myFunction2(true);
+
+// continue를 사용하여 for문중 원하는 구간을 skip하고 넘어갈 수 있다
