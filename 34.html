@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <input id="phoneNumberText" placeholder="전화번호" type="tel">
+  <p class="caption">
+    <small>실제로 전송되지 않음</small>
+  </p>
+  <button id="submitButton" type="submit">데이터 전송</button>
+  <script>
+    const imageName = 'image1.png';
+    console.log(imageName.replace('1.png', '2.png'));
+
+    const inputText = '제이\n-펍';
+    console.log(inputText.replace('\n', ''));
+
+    let phoneNumber = '010-1234-5678';
+    console.log(phoneNumber.replace(/-/g, ''))
+
+    document.querySelector('#submitButton').addEventListener('click', (event) => {
+      const phoneNumber = document.querySelector('#phoneNumberText').value;
+      const trimmedPhoneNumber = phoneNumber.replace(/-/g, '');
+      console.log(`전화번호는 ${trimmedPhoneNumber}입니다.`);
+      event.preventDefault;
+    })
+  </script>
+</body>
+</html>
