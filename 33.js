@@ -1,0 +1,1 @@
+'JavaScript'.substr(4, 6);
