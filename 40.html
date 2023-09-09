@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h2>전화번호를 입력해 주세요.</h2>
+  <input id="phoneNumberText" placeholder="전화번호" type="tel">
+  <p id="warningMessage"></p>
+  <script>
+    /J/.test('JavaScript');
+    // 'J'가 'JavaScript'에 포함되어 있는지 여부. true
+    /^iP/.test('iPhone');
+    // 'iPhone'의 시작 문자가 'iP'인지 여부. true
+    /\d/.test('레시피');
+    // '레시피' 문자열 내 숫자 포함 여부. false
+    /Java.*/.test('JavaScript');
+    // 'Jav' 다음의 문자 'a'가 0회 이상 존재하는지 여부. true
+    /코.*피/.test('코드 레시피');
+    // '코피' 혹은 '코'와'피' 사이의 문자 존재 여부. true
+    /\d+-\d+-\d+/.test('010-1234-5678');
+    // '숫자-숫자-숫자'의 형식 여부. true
+
+    const phoneNumberText = document.querySelector('#phoneNumberText');
+
+    const warningMessage = document.querySelector('#warningMessage');
+
+    phoneNumberText.addEventListener('keyup', () => {
+      const phoneNumber = phoneNumberText.value;
+      const trimmedPhoneNumber = phoneNumber.replace(/-/g, '');
+      if (/^[0][0-9]{9,10}$/.test(trimmedPhoneNumber) === false) {
+        warningMessage.innerText = '전화번호의 형식에 맞춰 입력해 주세요.';
+      } else {
+        warningMessage.innerText = '';
+      }
+    });
+  </script>
+</body>
+</html>
