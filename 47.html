@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>유저 리스트</h1>
+  <div class="container"></div>
+
+  <script>
+    const array = ['딸기','귤','사과'];
+
+    array.forEach((value, index) => {
+      //인덱스와 값을 순서대로 출력
+      console.log(index, value);
+      // 0 '딸기', 1 '귤', 2 '사과' 순서로 출력
+    })
+
+    [1, 2, 3, 4, 5, 6, 7, 8]
+      .filter((value) => value % 2 === 0)
+      .forEach((value) => {
+      console.log(value);
+    })
+    // 2, 4, 6, 8
+
+    const userList = [
+      { id: 1, name: '곰', address: '서울'},
+      { id: 2, name: '여우', address: '대전'},
+      { id: 3, name: '사자', address: '부산'}
+    ];
+
+    const container = document.querySelector('.container');
+
+    userList.forEach((userData) => {
+      container.innerHTML += `
+        <div class="card">
+          <h2>${userData.name}</h2>
+          <p>지역: ${userData.address}</p>
+        </div>
+      `;
+    });
+  </script>
+</body>
+</html>
+
+// 배열.forEach(콜백함수) - 배열의 요소 데이터 콜백 함수로 실행
+// 배열.forEach(요소🚨, 인덱스🚨, 기존배열🚨) => {} - 요소, 인덱스, 기존 배열을 사용해 처리
