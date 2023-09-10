@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <h1>트윗하고 싶은 내용을 입력해 주세요.</h1>
+  <textarea id="tweetTextArea"></textarea>
+  <button id="tweetButton">트윗하기</button>
+
+  <script>
+    console.log(encodeURI('http://example.com/귀여운 고양이 페이지.html'));
+    // "http://example.com/%EA%B7%80%EC%97%AC%EC%9A%B4%20%EA%B3%A0%EC%96%91%EC%9D%B4%20%ED%8E%98%EC%9D%B4%EC%A7%80.html"
+    console.log(encodeURIComponent('http://example.com/귀여운 고양이 페이지.html'));
+    // "http%3A%2F%2Fexample.com%2F%EA%B7%80%EC%97%AC%EC%9A%B4%20%EA%B3%A0%EC%96%91%EC%9D%B4%20%ED%8E%98%EC%9D%B4%EC%A7%80.html"
+
+    /* encodeURI()와 encodeURIComponent()의 차이는
+      이스케이프 처리를 실행하는 문자의 종류이고
+      encodeURIComponent()가 encodeURI()보다
+      이스케이프 처리를 실행하는 문자의 종류가 더 많다
+            / ? & = + : @ $ ; , #
+    */
+
+    document.querySelector('#tweetButton').addEventListener('click', () => {
+      // 트윗 내용 가져오기
+      let tweetText = document.querySelector('#tweetTextArea').value;
+      // #JavaScript와 빈칸을 트윗 내용에 추가하기
+      tweetText += ' #JavaScript';
+      // 인코딩하기
+      const encodedText = encodeURIComponent(tweetText);
+      // 링크 작성하기
+      const tweetURL =
+            `https://twitter.com/intent/tweet?text=${encodedText}`;
+      // 링크 열기
+      window.open(tweetURL);
+    })
+  </script>
+</body>
+</html>
