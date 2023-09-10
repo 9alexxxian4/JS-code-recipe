@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="timer">
+    <div class="second"></div>
+  </div>
+  <script>
+    console.log((0.33333).toFixed(2));
+    // 0.33(문자열)
+
+    console.log((123.5678).toFixed(1));
+    // 123.6(근사치로 변환)
+
+    console.log((2.4).toFixed(4));
+    // 2.4000(소수점이 네 자리가 되도록 0이 채워짐)
+
+    console.log((0.33333).toPrecision(2));
+    // 0.33(정밀도2)
+
+    console.log((123.456).toPrecision(3));
+    // 123(정밀도3)
+
+    const secondElement = document.querySelector('.second');
+
+    // 15초를 목표치로 지정
+    const goalTime = new Date().getTime() + 15 * 1000;
+
+    update();
+
+    // 프레임 실행하는 함수
+    function update(){
+      //현재 시간
+      const currentTime = new Date().getTime();
+      // 목표치까지 남은 시간
+      const leftTime = goalTime - currentTime;
+      // 초 단위 표시. 밀리초는 소수점 두자리까지
+      secondElement.innerText = (leftTime / 1000).toFixed(2);
+      // 프레임에서 update()재실행
+      requestAnimationFrame(update);
+    }
+  </script>
+</body>
+</html>
+
+// 숫자값.toFixed([자릿수]🚨) - 소수점 이하 자릿수 지정 - 문자열 반환
+// 숫자값.toPrecision([자릿수]🚨) - 자릿수 지정 정밀도 반환 - 문자열 반환
