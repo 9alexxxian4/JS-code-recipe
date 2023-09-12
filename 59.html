@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="button-wrapper">
+    <button class="ascending">오름차순</button>
+    <button class="descending">내림차순</button>
+  </div>
+  <ul class="user_list">
+    
+  </ul>
+
+  <script>
+    // 데이터
+    const userDataList = [
+      { id: 2, name: '곰'},
+      { id: 10, name: '여우'},
+      { id: 4, name: '사자'},
+      { id: 29, name: '기린'},
+      { id: 101, name: '호랑이'}
+    ];
+
+    // 데이터 표시 업데이트
+    function updataList() {
+      let listHtml = '';
+      for (const data of userDataList) {
+        listHtml += `<li>${data.id} : ${data.name}</li>`;
+      }
+      
+      document.querySelector('.user_list').innerHTML = listHtml;
+    }
+
+    // 오름차순 정렬
+    function sortByAscending() {
+      userDataList.sort((a,b) => {
+        return a.id - b.id;
+      });
+      
+      updataList();
+    }
+
+    // 내림차순 정렬
+    function sortByDescending() {
+      userDataList.sort((a,b) => {
+        return b.id - a.id;
+      });
+      
+      updataList();
+    }
+
+    // 오름차순 버튼 클릭 시 처리 작업
+    document.querySelector('.ascending').addEventListener('click', () => {
+      sortByAscending();
+    })
+
+    // 내림차순 버튼 클릭 시 처리 작업
+    document.querySelector('.descending').addEventListener('click', ()=> {
+      sortByDescending();
+    });
+
+    // 오름차순으로 초기 정렬
+    sortByAscending();
+
+    
+    // 🚨sort()에서 비교 함수를 생략하면 문자열의 유니코드 순서대로 정렬된다.🚨
+    const array1 = [5, 1, 10];
+    array1.sort();
+    console.log(array1); // [1, 10, 5]
+
+    const array2 = ['三','二','一'];
+    array2.sort();
+    console.log(array2); // ['一','三','二']
+  </script>
+</body>
+</html>
