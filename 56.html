@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="search-word-wrapper"> 
+    <label>유저 ID 
+      <input id="search-id-input"type="text">
+    </label>
+  </div>
+  
+  <p id="search-result">
+    유저 검색 결과 없음
+  </p>
+  <script>
+    const myArray = ['곰','사자','여우','원숭이'];
+
+    // 배열에서 '사자'를 가져옴
+    const targetUser = myArray.find((e) => e === '사자');
+
+    // 다음과 같이 표기할 수도 있음
+    // const targetUser = myArray.find(e => {
+    // return e === '사자'
+    // })
+
+    console.log(targetUser); // '사자'
+
+    const myArray2 = ['사자','곰','여우','양'];
+
+    const targetIndex = myArray2.findIndex((e) => e === '곰');
+
+    console.log(targetIndex); // 1
+
+    // id 키와 name 키를 가지는 유저 데이터 배열
+    const userDataList = [
+      { id: 123, name: '곰'},
+      { id: 1021, name: '사자'},
+      { id: 6021, name: '여우'}
+    ];
+
+    // 검색 ID 입력창
+    const searchIdInput = document.querySelector('#search-id-input');
+
+    // 검색 결과 표시창
+    const searchResult = document.querySelector('#search-result');
+
+    searchIdInput.addEventListener('keyup', () => {
+      // 검색 ID 가져오기
+      const searchId = Number(event.target.value);
+      findUser(searchId);
+    });
+
+    // 유저 검색
+    function findUser(searchId) {
+      // 해당 데이터 가져오기
+      const targetData = userDataList.find((data) => data.id === searchId);
+      // 해당 데이터가 없으면 '유저 검색 결과 없음' 표시 후 종료
+      if (targetData == null) {
+        searchResult.textContent = '유저 검색 결과 없음';
+        return;
+      }
+      // 검색 결과의 이름을 표시
+      searchResult.textContent = targetData.name;
+    }
+  </script>
+</body>
+</html>
+
+// 배열.find(콜백함수) - 콜백 함수 조건에 맞는 첫 요소 - 요소를 반환
+// 배열.findIndex(테스트함수) - 콜백 함수 조건에 맞는 첫 요소의 인덱스 - 숫자를 반환
+
+// 콜백함수 - ([요소🚨],[인덱스🚨],[기존배열🚨]) => 진릿값 - 요소를 확인하고 진릿값을 반환
