@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="button-wrapper">
+    <button class="button" data-age="20">20세 이상</button>
+    <button class="button" data-age="30">30세 이상</button>
+    <button class="button" data-age="40">40세 이상</button>
+  </div>
+  <ul class="user_list"></ul>
+
+  <script>
+    const newArray = [10, 20, 30, 40];
+    const newArray2 = newArray.filter((value) => value >= 30);
+    // 원본 훼손 안됌
+    console.log(newArray); // [10, 20, 30, 40]
+    console.log(newArray2); // [30, 40]
+
+    const userDataList = [
+      { name: '곰', age: 18 },
+      { name: '여우', age: 27 },
+      { name: '사자', age: 32 },
+      { name: '얼룩말', age: 41 },
+      { name: '기린', age: 56 },
+    ];
+
+    // .button 요소의 이벤트 설정
+    document.querySelectorAll('.button').forEach((e) => {
+      e.addEventListener('click', (e) => {
+        onClickButton(e);
+      });
+    });
+    // 버튼 클릭 시 처리
+    function onClickButton(e) {
+      // 클릭한 버튼의 요소
+      const button = e.target;
+      // 버튼 요소에서 data-age 가져오기
+      const targetAge = button.dataset.age;
+      // targetAge 이상의 유저 배열 생성
+      const filterdList = userDataList.filter((data) => data.age >= targetAge);
+      updataList(filterdList);
+    }
+    // 유저 배열을 출력
+    function updataList(filterdList) {
+      let listHtml = '';
+      for (const data of filterdList) {
+        listHtml += `<li>${data.name} : ${data.age}세</li>`;
+      }
+      document.querySelector('.user_list').innerHTML = listHtml;
+    }
+
+  </script>
+</body>
+</html>
+
+// 배열.filter(콜백함수) - 콜백 함수 조건을 만족하는 데이터의 배열 생성 - 배열 반환
+
+// ([요소🚨],[인덱스🚨],[기존배열🚨]) => 진릿값 - 요소를 받아 진위 반환
