@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>확인창 표시하기</title>
+</head>
+<body>
+  <button class="btn"></button>
+  <script>
+    // 버튼 참조
+    const btn = document.querySelector('.btn');
+    // 버튼 클릭시 작업
+    btn.addEventListener('click', () => {
+      // 확인창 표시
+      const isYes = confirm('날씨가 화창한가요?');
+      console.log(isYes);
+    });
+
+
+    // confirm(내용) - 확인창 표시 - 진릿값 반환
+  </script>
+</body>
+</html>
