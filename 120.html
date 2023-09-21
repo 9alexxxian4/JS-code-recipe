@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class='box'></div>
+
+  <script>
+    document.querySelector('.box').addEventListener('mouseenter', () => {
+      console.log('포인팅 디바이스가 .box 요소 위에 있음');
+    });
+
+    document.querySelector('.box').addEventListener('mouseleave', () => {
+      console.log('포인팅 디바이스가 .box 요소를 벗어남');
+    });
+
+
+    // mouseenter - 포인팅 디바이스가 요소의 위치에 있을 때
+    // mouseleave - 포인팅 디바이스가 요소를 벗어날 때
+  </script>
+</body>
+</html>
