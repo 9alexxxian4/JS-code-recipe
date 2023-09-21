@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p class="paragraph">안녕</p>
+  <div id="ballon"></div>
+
+  <script>
+    // 말풍선 요소
+    const balloon = document.querySelector('#ballon');
+
+    // 대상 문자열 요소
+    const paragraph = document.querySelector('.paragraph');
+
+    // 선택 작업 시 처리
+    paragraph.addEventListener('selectstart', () => {
+      // 클릭 해제시 처리
+      paragraph.addEventListener('mouseup', (event) => {
+        // 선택한 문자열 가져오가
+        const selectionCharacters = window.getSelection().toString();
+        
+        if(selectionCharacters.length > 0) {
+          // 한글자 이상인 경우 문자를 표시
+          balloon.innerHTML = selectionCharacters;
+          balloon.classList.add('on');
+          balloon.style.left = `${event.clientX - balloon.clientWidth / 2}px`;
+          balloon.style.top = `${event.clientY - balloon.clientHeight * 2}px`;
+        } else {
+          // 선택된 문자열이 없으면 말풍성 닫기
+          removePopup();
+        }
+      },
+      {
+        once: true 
+      }
+    );
+    })
+
+    // 말풍선 클릭 시 닫기
+    balloon.addEventListener('click', removePopup);
+
+    // 말풍선 닫기 처리
+    function removePopup() {
+      balloon.classList.remove('on');
+    }
+
+
+
+    // selevtstart - 텍스트 선택 시점
+  </script>
+</body>
+</html>
