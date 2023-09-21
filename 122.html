@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <div class="character">
+  </div>
+
+  <script>
+    // 마우스 이동 시 좌표 출력
+    targetBox.addEventListener('mousemove', (e) => {
+      console.log(e.clientX, e.clientY);
+    });
+
+    const character = document.querySelector('.character');
+
+    // 화면에서 마우스 클릭 시 캐릭터 이동 시작
+    document.addEventListener('mousedown', () => {
+      // 마우스 움직임에 따라 캐릭터를 이동
+      document.addEventListener('mousemove', onMouseMove);
+      // 화면에서 마우스 클릭을 떼면 캐릭터 이동이 멈춤
+      document.addEventListener('mouseup', () => {
+        document.removeEventListener('mousemove', onMouseMove);
+      });
+    });
+
+    function onMouseMove(event) {
+      character.style.left = `${event.clientX - 100}px`;
+      character.style.top = `${event.clientY - 100}px`;
+    }
+
+
+    // event.clientX - 브라우저 좌측 상단 기준 X좌표 - 숫자반환
+    // event.clientY - 브라우저 좌측 상단 기준 Y좌표 - 숫자반환
+    // event.offsetX - 요소 좌측 상단 기준 X좌표 - 숫자반환
+    // event.offsetY - 요소 좌측 상단 기준 Y좌표 - 숫자반환
+    // event.pageX - 페이지 상단 기준 X좌표 - 숫자반환
+    // event.pageY - 페이지 상단 기준 Y좌표 - 숫자반환
+    // event.screenX - 디바이스 좌측 상단 기준 X좌표 - 숫자반환
+    // event.screenY - 디바이스 좌측 상단 기준 Y좌표 - 숫자반환
+  </script>
+</body>
+</html>
