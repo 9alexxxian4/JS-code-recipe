@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <textarea class="textarea"></textarea>
+  <p>현재 <span class="string_num">0</span>문자를 입력 중입니다.</p>
+
+  <script>
+    document.querySelector('.textarea').addEventListener('keydown', () => {
+      console.log('키가 눌러졌습니다.');
+    });
+
+    document.querySelector('.textarea').addEventListener('keypress', () => {
+      console.log('문자가 입력되었습니다.');
+    });
+
+    document.querySelector('.textarea').addEventListener('keyup', () => {
+      console.log('키 눌림이 해제되었습니다.');
+    });
+
+    // 텍스트 영역
+    const textarea = document.querySelector('.textarea');
+    // 입력 중인 문자 수
+    const string_num = document.querySelector('.string_num');
+
+    // 텍스트를 입력할 때마다 onKeyUp()을 실행
+    textarea.addEventListener('keyup', onKeyUp);
+
+    function onKeyUp() {
+      // 입력된 텍스트
+      const inputText = textarea.value;
+      // 문자 수를 반영
+      string_num.innerText = inputText.length;
+    }
+
+
+    // keydown - 키를 누르는 시점
+    // keyup - 누른 키를 떼는 시점
+    // keypress - 문자 키가 눌러진 시점
+  </script>
+</body>
+</html>
