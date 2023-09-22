@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<body>
+  <p>윈도우 가로 길이: <span id="widthLog"></span></p>
+  <p>윈도우 세로 길이: <span id="heightLog"></span></p>
+
+  <script>
+    // 가로 길이를 표시하는 요소
+    const widthLog = document.querySelector('#widthLog');
+
+    // 세로 길이를 표시하는 요소
+    const heightLog = document.querySelector('#heightLog');
+
+    // 윈도우 사이즈가 변경될 때마다 처리실행
+    window.addEventListener('resize', () => {
+      widthLog.innerText = `${window.innerWidth}px`;
+      heightLog.innerText = `${window.innerHeight}px`;
+    })
+
+
+
+    // resize - 브라우저 윈도우 창의 사이즈 변환 시점
+  </script>
+</body>
+</html>
